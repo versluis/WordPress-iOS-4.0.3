@@ -1098,8 +1098,9 @@ CGFloat const EPVCTextViewTopPadding = 7.0f;
         }
         
         if ((infoText.text == nil) || ([infoText.text isEqualToString:@""])) {
-            // infoText.text = urlField.text;
-            infoText.text = @"check out the full gallery here";
+            
+            // tip: add a default URL here if the text field is empty
+            infoText.text = urlField.text;
         }
         
         NSString *urlString = [fles validateNewLinkInfo:[urlField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];

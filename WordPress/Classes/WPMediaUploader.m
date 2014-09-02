@@ -24,9 +24,6 @@ NSString *const WPMediaUploaderUploadOperation = @"upload_operation";
     self = [super init];
     if (self) {
         _mediaUploads = [NSMapTable strongToStrongObjectsMapTable];
-        
-        // observer for next media
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(uploadNext) name:@"UploadTheNextMediaThing" object:nil];
     }
     return self;
 }
@@ -39,29 +36,24 @@ NSString *const WPMediaUploaderUploadOperation = @"upload_operation";
     _numberOfImagesToUpload += [mediaObjects count];
     
     self.isUploadingMedia = YES;
+    
+    // CHANGE FOR ORDERED IMAGE UPLAODS
+    
+    // store reference to media array
     self.mediaToUpload = mediaObjects;
     
+    // observer for next media
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(uploadNext) name:@"UploadTheNextMediaThing" object:nil];
+    
+    // upload first object and increment counter
     [self uploadMedia:mediaObjects.firstObject];
     self.currentUpload++;
-    
-    /*
-    for (Media *media in mediaObjects) {
-      
-        // add image to upload queue
-        [self uploadMedia:media];
-        
-        // wait for notification
-        // how? can't use while or NSThred sleep...
-        // we could just wait 5 seconds between uploads
 
-        // loop back
-        
-    }
-     */
 }
 
 - (void)uploadNext {
     
+    // called via observer when current upload has finished
     NSLog(@"uploadNext notification received");
     
     // is another upload required?
@@ -70,7 +62,23 @@ NSString *const WPMediaUploaderUploadOperation = @"upload_operation";
         Media *nextMedia = [self.mediaToUpload objectAtIndex:self.currentUpload];
         [self uploadMedia:nextMedia];
         self.currentUpload++;
+    
+    } else {
+        [self cleanup];
     }
+    
+}
+
+- (void)cleanup {
+    
+    // cleanup to avoid crashes
+    
+    // remove observer
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"UploadTheNextMediaThing" object:nil];
+    
+    // reset counter and media array
+    self.currentUpload = nil;
+    self.mediaToUpload = nil;
     
 }
 
@@ -85,7 +93,7 @@ NSString *const WPMediaUploaderUploadOperation = @"upload_operation";
         [media save];
         NSLog(@"I've finished uploading image: %@", media.filename);
         
-        // post notification that we're done
+        // post notification that we're done uploading
         NSNotification *notification = [NSNotification notificationWithName:@"UploadTheNextMediaThing" object:self];
         [[NSNotificationCenter defaultCenter]postNotification:notification];
         
@@ -98,7 +106,7 @@ NSString *const WPMediaUploaderUploadOperation = @"upload_operation";
         
         [WPError showAlertWithTitle:NSLocalizedString(@"Upload failed", nil) message:error.localizedDescription];
         
-        // post notification that we're done
+        // post notification that we're done uploading
         NSNotification *notification = [NSNotification notificationWithName:@"UploadTheNextMediaThing" object:self];
         [[NSNotificationCenter defaultCenter]postNotification:notification];
         
@@ -115,6 +123,7 @@ NSString *const WPMediaUploaderUploadOperation = @"upload_operation";
     }
     [_mediaUploads removeAllObjects];
     self.isUploadingMedia = NO;
+    [self cleanup];
 }
 
 - (void)uploadMedia:(Media *)media withSuccess:(void (^)())success failure:(void (^)(NSError *error))failure {
