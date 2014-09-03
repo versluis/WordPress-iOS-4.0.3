@@ -1073,6 +1073,9 @@ CGFloat const EPVCTextViewTopPadding = 7.0f;
     _linkHelperAlertView.secondTextField.keyboardType = UIKeyboardTypeURL;
     _linkHelperAlertView.secondTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     
+    // pre-populate link text field from pasteboard (inserts copied link)
+    _linkHelperAlertView.secondTextFieldValue = [UIPasteboard generalPasteboard].string;
+    
     if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation) && IS_IPHONE && !_isExternalKeyboard) {
         [_linkHelperAlertView hideTitleAndDescription:YES];
     }
