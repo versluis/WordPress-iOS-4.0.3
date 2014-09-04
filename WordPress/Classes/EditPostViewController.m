@@ -1073,6 +1073,9 @@ CGFloat const EPVCTextViewTopPadding = 7.0f;
     _linkHelperAlertView.secondTextField.keyboardType = UIKeyboardTypeURL;
     _linkHelperAlertView.secondTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     
+    // pre-populate description text field here if desired
+    _linkHelperAlertView.firstTextFieldValue = @"Here's the link. ";
+    
     // pre-populate link text field from pasteboard (inserts copied link)
     _linkHelperAlertView.secondTextFieldValue = [UIPasteboard generalPasteboard].string;
     
@@ -1102,7 +1105,7 @@ CGFloat const EPVCTextViewTopPadding = 7.0f;
         
         if ((infoText.text == nil) || ([infoText.text isEqualToString:@""])) {
             
-            // tip: add a default URL here if the text field is empty
+            // overrides text if nothing is selected
             infoText.text = urlField.text;
         }
         

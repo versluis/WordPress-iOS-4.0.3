@@ -417,7 +417,7 @@ static NSString *const TableViewActivityCellIdentifier = @"TableViewActivityCell
         cell.tag = PostSettingsRowCategories;
         
     } else if (indexPath.row == PostSettingsRowTags) {
-        // Tags
+        // Tags (original)
         UITableViewTextFieldCell *textCell = [self getTextFieldCell];
         textCell.textLabel.text = NSLocalizedString(@"Tags", @"Label for the tags field. Should be the same as WP core.");
         textCell.textField.text = self.post.tags;
@@ -428,6 +428,8 @@ static NSString *const TableViewActivityCellIdentifier = @"TableViewActivityCell
         cell.tag = PostSettingsRowTags;
 
         self.tagsTextField = textCell.textField;
+        
+        // Tags (emulating choice of Categories)
     }
     
     return cell;
