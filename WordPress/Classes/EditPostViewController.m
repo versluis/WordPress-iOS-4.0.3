@@ -1074,7 +1074,7 @@ CGFloat const EPVCTextViewTopPadding = 7.0f;
     _linkHelperAlertView.secondTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     
     // pre-populate description text field here if desired
-    _linkHelperAlertView.firstTextFieldValue = @"Here's the link. ";
+    _linkHelperAlertView.firstTextFieldValue = @"Click here for the full gallery";
     
     // pre-populate link text field from pasteboard (inserts copied link)
     _linkHelperAlertView.secondTextFieldValue = [UIPasteboard generalPasteboard].string;
