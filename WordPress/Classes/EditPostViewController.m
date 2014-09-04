@@ -1152,7 +1152,10 @@ CGFloat const EPVCTextViewTopPadding = 7.0f;
 - (void)insertMediaBelow:(NSNotification *)notification {
     
 	Media *media = (Media *)[notification object];
-	NSString *prefix = @"<br /><br />";
+	
+    // if this is the second+ media, add this HTML before inserting link to media
+    // NSString *prefix = @"<br /><br />";
+    NSString *prefix = @"<br />\n\n";
     
 	if(self.post.content == nil || [self.post.content isEqualToString:@""]) {
 		self.post.content = @"";
