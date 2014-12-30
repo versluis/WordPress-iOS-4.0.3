@@ -1,4 +1,4 @@
-# WordPress for iOS 4.0.4
+# WordPress for iOS (tweaked)
 
 This is a fork of the fantastic WordPress for iOS 4.0.3 with my own tweaks applied. 
 

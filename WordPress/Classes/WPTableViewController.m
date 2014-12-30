@@ -377,6 +377,12 @@ NSString *const DefaultCellIdentifier = @"DefaultCellIdentifier";
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:[self tableViewRowAnimation]];
             break;
+            
+            case NSFetchedResultsChangeMove:
+            break;
+            
+            case NSFetchedResultsChangeUpdate:
+            break;
     }
 }
 
