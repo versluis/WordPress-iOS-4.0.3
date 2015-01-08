@@ -225,10 +225,39 @@ static NSInteger const IndexForMeTab = 2;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    
+    // as discussed here: http://pinkstone.co.uk/how-to-control-the-preview-screenshot-in-the-ios-multitasking-switcher/
+    
+    // fill screen with colour
+    UIView *colourView = [[UIView alloc]initWithFrame:self.window.frame];
+    colourView.backgroundColor = [UIColor blackColor];
+    colourView.tag = 1234;
+    colourView.alpha = 0;
+    
+    [self.window addSubview:colourView];
+    [self.window bringSubviewToFront:colourView];
+    
+    // fade in the view
+    [UIView animateWithDuration:0.5 animations:^{
+        colourView.alpha = 1;
+    }];
+    
     DDLogInfo(@"%@ %@", self, NSStringFromSelector(_cmd));
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    // grab a reference to our view
+    UIView *colourView = [self.window viewWithTag:1234];
+    
+    // fade away colour view from main view
+    [UIView animateWithDuration:0.5 animations:^{
+        colourView.alpha = 0;
+    } completion:^(BOOL finished) {
+        // remove when finished fading
+        [colourView removeFromSuperview];
+    }];
+    
     DDLogInfo(@"%@ %@", self, NSStringFromSelector(_cmd));
     [WPAnalytics track:WPAnalyticsStatApplicationOpened];
 }
