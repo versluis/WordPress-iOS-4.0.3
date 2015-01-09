@@ -1073,11 +1073,19 @@ CGFloat const EPVCTextViewTopPadding = 7.0f;
     _linkHelperAlertView.secondTextField.keyboardType = UIKeyboardTypeURL;
     _linkHelperAlertView.secondTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     
+    // grab reference to NSUSerDefaults
+    NSUserDefaults *myUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *pastedLinkText = [myUserDefaults objectForKey:@"pastedLinkDescription"];
+    
     // pre-populate description text field here if desired
-    _linkHelperAlertView.firstTextFieldValue = @"Here's the link.";
+    _linkHelperAlertView.firstTextFieldValue = pastedLinkText;
+
+    NSLog(@"%@", [myUserDefaults valueForKey:@"pastedLinkDescription"]);
     
     // pre-populate link text field from pasteboard (inserts copied link)
-    _linkHelperAlertView.secondTextFieldValue = [UIPasteboard generalPasteboard].string;
+    if ([myUserDefaults boolForKey:@"pasteLinksEnabled"]) {
+        _linkHelperAlertView.secondTextFieldValue = [UIPasteboard generalPasteboard].string;
+    }
     
     if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation) && IS_IPHONE && !_isExternalKeyboard) {
         [_linkHelperAlertView hideTitleAndDescription:YES];
