@@ -133,6 +133,13 @@ static NSInteger const IndexForMeTab = 2;
     [Helpshift installForApiKey:[WordPressComApiCredentials helpshiftAPIKey] domainName:[WordPressComApiCredentials helpshiftDomainName] appID:[WordPressComApiCredentials helpshiftAppId]];
     [SupportViewController checkIfHelpshiftShouldBeEnabled];
     
+    // set version number from Bundle for display in Settings Bundle
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    [[NSUserDefaults standardUserDefaults] setValue:version forKey:@"versionNumber"];
+    [[NSUserDefaults standardUserDefaults] setValue:build forKey:@"buildNumber"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     return YES;
 }
 
