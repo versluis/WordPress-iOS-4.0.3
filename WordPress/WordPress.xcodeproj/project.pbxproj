@@ -830,6 +830,7 @@
 		CC70165E185BB97A007B37DB /* ReaderCommentPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = CC70165D185BB97A007B37DB /* ReaderCommentPublisher.m */; };
 		CCEF153114C9EA050001176D /* WPWebAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCEF153014C9EA050001176D /* WPWebAppViewController.m */; };
 		CEBD3EAB0FF1BA3B00C1396E /* Blog.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBD3EAA0FF1BA3B00C1396E /* Blog.m */; };
+		D2DFF1C01A5F43C500E000E6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2DFF1BF1A5F43C500E000E6 /* Settings.bundle */; };
 		DDDAF057187F38810094973D /* StatsViewsVisitors.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDAF056187F38810094973D /* StatsViewsVisitors.m */; };
 		E100C6BB1741473000AE48D8 /* WordPress-11-12.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = E100C6BA1741472F00AE48D8 /* WordPress-11-12.xcmappingmodel */; };
 		E10675C8183F82E900E5CE5C /* SettingsViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E10675C7183F82E900E5CE5C /* SettingsViewControllerTest.m */; };
@@ -2080,6 +2081,7 @@
 		CCEF153014C9EA050001176D /* WPWebAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPWebAppViewController.m; sourceTree = "<group>"; };
 		CEBD3EA90FF1BA3B00C1396E /* Blog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blog.h; sourceTree = "<group>"; };
 		CEBD3EAA0FF1BA3B00C1396E /* Blog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Blog.m; sourceTree = "<group>"; };
+		D2DFF1BF1A5F43C500E000E6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D4972215061A4C21AD2CD5B8 /* libPods-WordPressTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WordPressTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDDAF055187F38810094973D /* StatsViewsVisitors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewsVisitors.h; sourceTree = "<group>"; };
 		DDDAF056187F38810094973D /* StatsViewsVisitors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewsVisitors.m; sourceTree = "<group>"; };
@@ -2513,6 +2515,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D2DFF1BF1A5F43C500E000E6 /* Settings.bundle */,
 				E1756E661694AA1500D9EC00 /* Derived Sources */,
 				E11F949814A3344300277D31 /* WordPressApi */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -4654,6 +4657,7 @@
 				CC6B3BFF15A35F10005A4523 /* friend_finder_cancel_btn.png in Resources */,
 				CC6B3C0015A35F10005A4523 /* friend_finder_cancel_btn@2x.png in Resources */,
 				85495F5C17C6FACF00871A7A /* icon-comments-trash-active@2x.png in Resources */,
+				D2DFF1C01A5F43C500E000E6 /* Settings.bundle in Resources */,
 				E232E5FE182E9E8600792CA0 /* icon-username-field@2x.png in Resources */,
 				857F55D217CEC5E100E154E1 /* doneButton-ios7@2x.png in Resources */,
 				3029D8421859359C00298395 /* icon_format_underline_highlighted.png in Resources */,
