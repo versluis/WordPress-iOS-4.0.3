@@ -34,5 +34,6 @@ Don't forget to change your Team ID before building this fork.
 
 ### The "real" WordPress for iOS Source Code
 
-The current version of WordPress is developed here: https://github.com/wordpress-mobile/WordPress-iOS/
+The current version of WordPress is developed here: 
+- https://github.com/wordpress-mobile/WordPress-iOS/
 
